@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update User</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+        crossorigin="anonymous" />
+</head>
+<body>
+<header th:fragment="site-header">
+  <a href="index.html" th:href="@{/}"></a>
+  <a href="#" th:href="@{/}">Home</a>
+  <a href="#" th:href="@{/add_user}">Add User</a>
+</header>
+<div>
+  <form th:action="@{/update_user}" method="post" th:object="${user}">
+    <label>ID(Read-only):</label>
+    <input type="textro" name="id" th:value="${user.id}" readonly=""><br/>
+
+    <label>First Name:</label>
+    <input type="text" th:field="${user.firstName}" /><br/>
+
+    <label>Last Name:</label>
+    <input type="text" th:field="${user.lastName}" /><br/>
+
+    <label>Email:</label>
+    <input type="text" th:field="${user.email}" /><br/>
+
+    <button type="submit">Update</button>
+  </form>
+</div>
+</body>
+</html>

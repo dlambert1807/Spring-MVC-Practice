@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+<body>
+<header th:fragment="site-header">
+    <a href="index.html" th:href="@{/}"></a>
+    <a href="#" th:href="@{/}">Home</a>
+    <a href="#" th:href="@{/add_user}">Add User</a>
+</header>
+<div class="container">
+    <table class="table table-bordered table-striped table-hover table-dark">
+        <thead>
+        <tr>
+            <th> ID </th>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Email </th>
+            <th> Delete </th>
+            <th> Update </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user, iStat : ${users}">
+            <td><span th:text="${user.id}"> ID </span></td>
+            <td><span th:text="${user.firstName}"> First Name </span></td>
+            <td><span th:text="${user.lastName}"> Last Name </span></td>
+            <td><span th:text="${user.email}"> Last Name </span></td>
+            <td><form th:action="@{/delete_user}" th:object="${userToDelete}" method="post">
+                <input type="hidden" name="id" th:value="${user.id}">
+                <input type="hidden" name="firstName" th:value="${user.firstName}">
+                <input type="hidden" name="lastName" th:value="${user.lastName}">
+                <input type="hidden" name="email" th:value="${user.email}">
+                <button type="submit">Delete</button>
+            </form></td>
+            <td><form th:action="@{/user_to_edit}" th:object="${editUser}" method="post">
+                <input type="hidden" name="id" th:value="${user.id}">
+                <input type="hidden" name="firstName" th:value="${user.firstName}">
+                <input type="hidden" name="lastName" th:value="${user.lastName}">
+                <input type="hidden" name="email" th:value="${user.email}">
+                <button type="submit">Update</button>
+            </form></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
