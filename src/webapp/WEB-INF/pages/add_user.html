@@ -23,7 +23,10 @@
   <input type="text" th:field="*{lastName}" /><br/>
 
   <label>Email:</label>
-  <input type="text" th:field="*{email}" /><br/>
+  <input type="email" th:field="*{email}" /><br/>
+
+  <label>Receive emails?:</label>
+  <input type="checkbox" th:field="*{receiveEmails}" /><br/>
 
   <button type="submit">Submit</button>
 </form>

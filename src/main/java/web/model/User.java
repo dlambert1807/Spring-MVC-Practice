@@ -1,5 +1,8 @@
 package web.model;
 
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 @Entity
 public class User {
@@ -16,12 +19,17 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "receive_emails")
+    @NotNull
+    private Boolean receiveEmails;
+
     public User() {}
 
-    public User(String firstName, String lastName, String email){
+    public User(String firstName, String lastName, String email, Boolean receiveEmails){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.receiveEmails = receiveEmails;
     }
 
     public Long getId() {
@@ -54,6 +62,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getReceiveEmails() {
+        return receiveEmails;
+    }
+
+    public void setReceiveEmails(Boolean receiveEmails) {
+        this.receiveEmails = receiveEmails;
     }
 
     @Override

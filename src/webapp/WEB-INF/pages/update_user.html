@@ -27,7 +27,10 @@
     <input type="text" th:field="${user.lastName}" /><br/>
 
     <label>Email:</label>
-    <input type="text" th:field="${user.email}" /><br/>
+    <input type="email" th:field="${user.email}" /><br/>
+
+    <label>Receive emails?:</label>
+    <input type="checkbox" th:field="${user.receiveEmails}" /><br/>
 
     <button type="submit">Update</button>
   </form>
